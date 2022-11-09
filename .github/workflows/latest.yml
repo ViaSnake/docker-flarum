@@ -8,6 +8,8 @@ on:
 jobs:
   latest:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: flarum
     steps:
       - name: Checkout
         uses: actions/checkout@v2
