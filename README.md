@@ -1,31 +1,26 @@
-# mondedie/flarum
+# viasnake/flarum
 
-![logo](https://i.imgur.com/Bjrtbsc.png)
+[![](https://github.com/viasnake/docker-flarum/workflows/latest/badge.svg)](https://github.com/viasnake/docker-flarum/actions)
+[![](https://github.com/viasnake/docker-flarum/workflows/stable/badge.svg)](https://github.com/viasnake/docker-flarum/actions)
 
-[![](https://github.com/mondediefr/docker-flarum/workflows/build/badge.svg)](https://github.com/mondediefr/docker-flarum/actions)
-[![](https://img.shields.io/docker/pulls/mondedie/flarum)](https://hub.docker.com/r/mondedie/flarum)
-[![](https://img.shields.io/docker/stars/mondedie/flarum)](https://hub.docker.com/r/mondedie/flarum)
-
-### Tag available
-
- - **latest** [(Dockerfile)](https://github.com/mondediefr/docker-flarum/blob/master/Dockerfile)
- - **stable** [(Dockerfile)](https://github.com/mondediefr/docker-flarum/blob/master/Dockerfile)
- - **1.0.2** [(Dockerfile)](https://github.com/mondediefr/docker-flarum/blob/1.0.2/Dockerfile)
- - **1.2.0** [(Dockerfile)](https://github.com/mondediefr/docker-flarum/blob/1.2.0/Dockerfile)
-
-### Features
+## Features
 
 - Multi-platform image: `linux/386`, `linux/amd64`, `linux/arm/v6`, `linux/arm/v7`, `linux/arm64`
 - Lightweight & secure image
 - Based on Alpine Linux 3.16
 - **nginx** and **PHP 8.0**
-- Latest [Flarum Framework](https://github.com/flarum/framework) (v1.3.0)
+- Latest [Flarum Framework](https://github.com/flarum/framework) (v1.5.0)
 - MySQL/Mariadb driver
 - OPCache extension configured
 
+### Tag available
+
+- **latest** [(Dockerfile)](https://github.com/viasnake/docker-flarum/blob/master/Dockerfile)
+- **stable** [(Dockerfile)](https://github.com/viasnake/docker-flarum/blob/master/Dockerfile)
+
 ### Build-time variables
 
-- **VERSION** = Version of [flarum/flarum](https://github.com/flarum/flarum) skeleton (default: *v1.3.0*)
+- **VERSION** = Version of [flarum/flarum](https://github.com/flarum/flarum) skeleton (default: *v1.5.0*)
 
 ### Ports
 
@@ -71,24 +66,24 @@
 
 ## Installation
 
-#### 1 - Pull flarum image
+### 1 - Pull flarum image
 
 ```bash
-# Pull from hub.docker.com :
-docker pull mondedie/flarum:latest
+# Pull from ghcr.io :
+docker pull ghcr.io/viasnake/flarum:latest
 
 # or build it manually :
-docker build -t mondedie/flarum:latest https://github.com/mondediefr/docker-flarum.git
+docker build -t ghcr.io/viasnake/flarum:latest https://github.com/viasnake/docker-flarum.git
 ```
 
-#### 2 - Docker-compose.yml
+### 2 - Docker-compose.yml
 
 ```yml
 version: "3"
 
 services:
   flarum:
-    image: mondedie/flarum:stable
+    image: ghcr.io/viasnake/flarum:stable
     container_name: flarum
     env_file:
       - /mnt/docker/flarum/flarum.env
@@ -106,22 +101,22 @@ services:
     image: mariadb:10.5
     container_name: mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=xxxxxxxxxx
+      - MYSQL_ROOT_PASSWORD=CHANGE_ME
       - MYSQL_DATABASE=flarum
       - MYSQL_USER=flarum
-      - MYSQL_PASSWORD=xxxxxxxxxx
+      - MYSQL_PASSWORD=CHANGE_ME
     volumes:
       - /mnt/docker/mysql/db:/var/lib/mysql
 ```
 
-#### 3 - Run it
+### 3 - Run it
 
 You need a reverse proxy to access flarum, this is not described here. You can use the solution of your choice (Traefik, Nginx, Apache, Haproxy, Caddy, H2O...etc).
 
-Create a environment file (see docker-compose: /mnt/docker/flarum/flarum.env [here](https://github.com/mondediefr/docker-flarum/tree/master#2---docker-composeyml))
+Create a environment file (see docker-compose: /mnt/docker/flarum/flarum.env [here](https://github.com/viasnake/docker-flarum/tree/master#2---docker-composeyml))
 
 ```
-# vi /mnt/docker/flarum/flarum.env
+$ vi /mnt/docker/flarum/flarum.env
 
 DEBUG=false
 FORUM_URL=http://domain.tld
@@ -150,19 +145,19 @@ docker-compose up -d mariadb
 docker-compose up -d flarum
 ```
 
-* :warning: Your admin password must contain at least **8 characters** (FLARUM_ADMIN_PASS).
-* If you get an error 500 with _Something went wrong_ message, switch the `DEBUG` environment variable to `true` to see the actual error message in your browser.
+- :warning: Your admin password must contain at least **8 characters** (FLARUM_ADMIN_PASS).
+- If you get an error 500 with *Something went wrong* message, switch the `DEBUG` environment variable to `true` to see the actual error message in your browser.
 
 ![flarum-home](http://i.imgur.com/6kH9iTV.png)
 
-### Install additional php extensions
+## Install additional php extensions
 
 ```yml
 version: "3"
 
 services:
   flarum:
-    image: mondedie/flarum:stable
+    image: ghcr.io/viasnake/flarum:stable
     container_name: flarum
     environment:
       - PHP_EXTENSIONS=gmp session brotli
@@ -176,29 +171,29 @@ services:
 This example install php8-gmp php8-session and php8-brotli with apk  
 You can find a php extension here https://pkgs.alpinelinux.org/packages?name=php8-*&branch=v3.13&arch=x86_64
 
-### Install custom extensions
+## Install custom extensions
 
-**Flarum extensions list :** https://flagrow.io/extensions
+**Flarum extensions list :** https://extiverse.com/
 
-#### Install an extension
+### Install an extension
 
 ```sh
 docker exec -ti flarum extension require some/extension
 ```
 
-#### Remove an extension
+### Remove an extension
 
 ```sh
 docker exec -ti flarum extension remove some/extension
 ```
 
-#### List all extensions
+### List all extensions
 
 ```sh
 docker exec -ti flarum extension list
 ```
 
-### Custom vhost flarum nginx
+## Custom vhost flarum nginx
 
 File to change the vhost flarum `/etc/nginx/flarum/custom-vhost-flarum.conf`  
 To use file custom-vhost-flarum.conf add volume `/etc/nginx/flarum`
@@ -213,7 +208,7 @@ location = /sitemap.xml {
 }
 ```
 
-### Custom composer repositories
+## Custom composer repositories
 
 To use the composer repository system, add your repo name and json representation in `/mnt/docker/flarum/extensions/composer.repositories.txt`:
 
@@ -244,10 +239,10 @@ username/my-private-repo:0.1.0
 
 https://getcomposer.org/doc/03-cli.md#modifying-repositories
 
-### Guide for upgrade your flarum container
-
-See the instructions [here](https://github.com/mondediefr/docker-flarum/blob/master/UPGRADE.md)
-
 ## License
 
-Docker image [mondedie/flarum](https://hub.docker.com/r/mondedie/flarum) is released under [MIT License](https://github.com/mondediefr/docker-flarum/blob/master/LICENSE).
+[mondedie/flarum](https://hub.docker.com/r/mondedie/flarum) is released under [MIT License](https://github.com/mondediefr/docker-flarum/blob/master/LICENSE).
+
+[viasnake/flarum](https://github.com/viasnake/docker-flarum/pkgs/container/docker-flarum) is released under [MIT License](https://github.com/viasnake/docker-flarum/blob/master/LICENSE).
+
+[Flarum](https://github.com/flarum/flarum) is licensed under the MIT License.
