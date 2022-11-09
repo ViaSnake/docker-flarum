@@ -243,6 +243,6 @@ https://getcomposer.org/doc/03-cli.md#modifying-repositories
 
 [mondedie/flarum](https://hub.docker.com/r/mondedie/flarum) is released under [MIT License](https://github.com/mondediefr/docker-flarum/blob/master/LICENSE).
 
-[viasnake/flarum](https://github.com/viasnake/docker-flarum/pkgs/container/docker-flarum) is released under [MIT License](https://github.com/viasnake/docker-flarum/blob/master/LICENSE).
+[viasnake/flarum](https://github.com/viasnake/docker-flarum/pkgs/container/flarum) is released under [MIT License](https://github.com/viasnake/docker-flarum/blob/master/LICENSE).
 
 [Flarum](https://github.com/flarum/flarum) is licensed under the MIT License.
