@@ -1,7 +1,7 @@
 # viasnake/flarum
 
-[![](https://github.com/viasnake/docker-flarum/workflows/latest/badge.svg)](https://github.com/viasnake/docker-flarum/actions)
-[![](https://github.com/viasnake/docker-flarum/workflows/stable/badge.svg)](https://github.com/viasnake/docker-flarum/actions)
+[![](https://github.com/viasnake/docker-flarum/workflows/latest/badge.svg)](https://github.com/viasnake/docker-flarum/actions/workflows/latest.yml)
+[![](https://github.com/viasnake/docker-flarum/workflows/stable/badge.svg)](https://github.com/viasnake/docker-flarum/actions/workflows/stable.yml)
 
 ## Features
 
