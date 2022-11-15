@@ -15,8 +15,9 @@
 
 ### Tag available
 
-- **latest** [(Dockerfile)](https://github.com/viasnake/docker-flarum/blob/master/Dockerfile)
-- **stable** [(Dockerfile)](https://github.com/viasnake/docker-flarum/blob/master/Dockerfile)
+- **latest**
+- **stable**
+- **1.5.0**
 
 ### Build-time variables
 
