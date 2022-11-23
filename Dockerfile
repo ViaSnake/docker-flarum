@@ -3,7 +3,7 @@ FROM alpine:3.16
 LABEL description="Simple forum software for building great communities" \
       maintainer="snake <admin@viasnake>"
 
-ARG VERSION=v1.5.0
+ARG VERSION=v1.6.0
 
 ENV GID=991 \
     UID=991 \
